@@ -19,10 +19,11 @@ console.log(`Il prezzo per gli Over è: ${prezzoBigliettoOver}€`)
 
 if (age < 18) {
     alert(prezzoBigliettoUnder)
-} else if (age < 18 && age > 65) {
+} else if (age > 18 && age < 65) {
     alert(prezzoBigliettoIntero)
 } else if (age > 65) {
     alert(prezzoBigliettoOver)
 }
 
+document.getElementById("costoBiglietto").innerHTML = msg + risultato + "#24";
 
