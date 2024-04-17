@@ -8,6 +8,8 @@ let prezzoBigliettoIntero = (kmPercorsi * 0.21);
 console.log(`Il prezzo intero è: ${prezzoBigliettoIntero}€`)
 
 
+let msg = ("Il prezzo del biglietto è:")
+
 let x20 = (prezzoBigliettoIntero * 20 / 100);
 let x40 = (prezzoBigliettoIntero * 40 / 100);
 
@@ -25,5 +27,5 @@ if (age < 18) {
     alert(prezzoBigliettoOver)
 }
 
-document.getElementById("costoBiglietto").innerHTML = msg + risultato + "#24";
+document.getElementById("costoBiglietto").innerHTML = msg + (prezzoBigliettoUnder || prezzoBigliettoIntero || prezzoBigliettoOver) + "€"
 
