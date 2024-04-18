@@ -1,31 +1,36 @@
-let age = prompt("Quanti anni hai?");
+const age = prompt("Quanti anni hai?");
 console.log(`La mia età è: ${age}`);
 
-let kmPercorsi = prompt("Quanti km devi fare?");
+const kmPercorsi = prompt("Quanti km devi fare?");
 console.log(`Devo fare: ${kmPercorsi} km`);
 
-let prezzoBigliettoIntero = (kmPercorsi * 0.21);
-console.log(`Il prezzo intero è: ${prezzoBigliettoIntero}€`)
+const costPerKm = 0.21;
+const basePrice = (kmPercorsi * costPerKm);
+console.log(`Il prezzo intero è: ${basePrice}€`)
 
-
-let msg = ("Il prezzo del biglietto è:")
-
-let x20 = (prezzoBigliettoIntero * 20 / 100);
-let x40 = (prezzoBigliettoIntero * 40 / 100);
-
-let prezzoBigliettoUnder = (prezzoBigliettoIntero - x20)
-console.log(`Il prezzo per gli Under è: ${prezzoBigliettoUnder}€ `)
-let prezzoBigliettoOver = (prezzoBigliettoIntero - x40)
-console.log(`Il prezzo per gli Over è: ${prezzoBigliettoOver}€`)
-
+let finalPrice = basePrice;
 
 if (age < 18) {
-    alert(prezzoBigliettoUnder)
-} else if (age > 18 && age < 65) {
-    alert(prezzoBigliettoIntero)
+    console.log(`Applico lo sconto del 20%`)
+    const finalPrice = basePrice * 0.8
+    console.log(`Sconto del 20%:`, finalPrice)
 } else if (age > 65) {
-    alert(prezzoBigliettoOver)
+    console.log(`Applico lo sconto del 40%`)
+    const finalPrice = basePrice * 0.6
+    console.log(`Sconto del 40%:`, finalPrice)
+}
+console.log(`Prezzo finale:`, finalPrice)
+
+document.getElementById("prezzo").innerHTML = finalPrice;
+
+let username;
+
+document.getElementById("genera").onclick = function () {
+    username = document.getElementById("myName").value;
+    document.getElementById("myUsername").textContent = `${username}`;
+
+    kmPercorsi = document.getElementById("myKm").value;
+    console.log(kmPercorsi);
 }
 
-document.getElementById("costoBiglietto").innerHTML = msg + (prezzoBigliettoUnder || prezzoBigliettoIntero || prezzoBigliettoOver) + "€"
 
