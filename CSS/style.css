@@ -17,9 +17,9 @@ h2 {
     padding: 2rem;
 }
 
-.calcolaCard {
+.form {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: auto;
     background-color: white;
@@ -28,6 +28,7 @@ h2 {
     width: 80%;
     margin: auto;
     min-height: 8rem;
+    padding: 1rem;
 
 }
 
@@ -40,7 +41,7 @@ h2 {
 
 }
 
-.calcolaCard .row {
+#calcolaCard .row {
     display: flex;
     justify-content: space-between;
     align-items: center;

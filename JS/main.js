@@ -1,43 +1,57 @@
-// const age = prompt("Quanti anni hai?");
-// console.log(`La mia età è: ${age}`);
+// Calcolo prezzo biglietto
+// sotto 18 anni sconto 20%
+// sopra 65 anni sconto 40%
+// prezzo base 0.21 euro/km
 
-let kmPercorsi;
-console.log(`Devo fare: ${kmPercorsi} km`);
-
-const costPerKm = 0.21;
-const basePrice = (kmPercorsi * costPerKm);
-console.log(`Il prezzo intero è: ${basePrice}€`)
-
-let finalPrice = basePrice;
-
-// if (age < 18) {
-//     console.log(`Applico lo sconto del 20%`)
-//     const finalPrice = basePrice * 0.8
-//     console.log(`Sconto del 20%:`, finalPrice)
-// } else if (age > 65) {
-//     console.log(`Applico lo sconto del 40%`)
-//     const finalPrice = basePrice * 0.6
-//     console.log(`Sconto del 40%:`, finalPrice)
-// }
-// console.log(`Prezzo finale:`, finalPrice)
-
-document.getElementById("prezzo").innerHTML = finalPrice;
-
-let username;
-
-const myButton = document.getElementById(`clickable-button`)
+let eta, distanza, sconto, prezzoBiglietto
+const prezzoBase = 0.21
+// Capire eta del passeggero
+const etaElement = document.getElementById('eta')
+// Capire la distanza da percorrere
+const distanzaElement = document.getElementById('distanza')
+const submitElement = document.getElementById('submit')
+const prezzoBaseElement = document.getElementById('prezzoBase')
+const scontoElement = document.getElementById('sconto')
+const totaleElement = document.getElementById('totale')
+const warningElement = document.getElementById('warning')
+// Calcolare prezzo biglieto a base di chilometri
 
 
 
-document.getElementById("myButton").onclick = function () {
-    username = document.getElementById("myName").value;
+submitElement.addEventListener('click', function () {
+    eta = etaElement.value
+    distanza = distanzaElement.value
+    prezzoBiglietto = (prezzoBase * distanza)
+    if (eta === 'minorenne') {
+        // calcolo sconto del 20% moltiplico prezzo biglietto per 0.2
+        sconto = (prezzoBiglietto * 0.2)
+        // calcolo prezzo scontato
+        const prezzoScontato = (prezzoBiglietto - sconto)
+        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
+        scontoElement.innerHTML += `${sconto.toFixed(2)}`
+        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
+
+    } else if (eta === 'over65') {
+        // calcolo sconto del 40% moltiplico prezzo biglietto per 0.4         
+        sconto = (prezzoBiglietto * 0.4)
+        // calcolo prezzo scontato
+        const prezzoScontato = (prezzoBiglietto - sconto)
+        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
+        scontoElement.innerHTML += `${sconto.toFixed(2)}`
+        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
+
+    } else {
+        // calcolo sconto del 40% moltiplico prezzo biglietto per 0.4         
+        sconto = 0
+        // calcolo prezzo scontato
+        const prezzoScontato = (prezzoBiglietto - sconto)
+        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
+        scontoElement.innerHTML += `${sconto.toFixed(2)}`
+        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
+    }
+    username = document.getElementById("name").value;
     document.getElementById("myUsername").textContent = `${username}`;
 
-    kmPercorsi = document.getElementById("myKm").value;
-    console.log(kmPercorsi);
-}
 
-myButton.addEventListener(`click`, function () {
-    alert(`hai vinto`)
 })
 
