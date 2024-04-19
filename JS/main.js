@@ -3,55 +3,31 @@
 // sopra 65 anni sconto 40%
 // prezzo base 0.21 euro/km
 
-let eta, distanza, sconto, prezzoBiglietto
-const prezzoBase = 0.21
-// Capire eta del passeggero
-const etaElement = document.getElementById('eta')
-// Capire la distanza da percorrere
-const distanzaElement = document.getElementById('distanza')
-const submitElement = document.getElementById('submit')
-const prezzoBaseElement = document.getElementById('prezzoBase')
-const scontoElement = document.getElementById('sconto')
-const totaleElement = document.getElementById('totale')
-const warningElement = document.getElementById('warning')
-// Calcolare prezzo biglieto a base di chilometri
+let age = prompt("Quanti anni hai?");
+console.log(`La mia età è: ${age}`);
+let kmPercorsi = prompt("Quanti km devi fare?");
+console.log(`Devo fare: ${kmPercorsi} km`);
+let prezzoBigliettoIntero = (kmPercorsi * 0.21);
+console.log(`Il prezzo intero è: ${prezzoBigliettoIntero}€`)
 
 
+let msg = ("Il prezzo del biglietto è:")
 
-submitElement.addEventListener('click', function () {
-    eta = etaElement.value
-    distanza = distanzaElement.value
-    prezzoBiglietto = (prezzoBase * distanza)
-    if (eta === 'minorenne') {
-        // calcolo sconto del 20% moltiplico prezzo biglietto per 0.2
-        sconto = (prezzoBiglietto * 0.2)
-        // calcolo prezzo scontato
-        const prezzoScontato = (prezzoBiglietto - sconto)
-        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
-        scontoElement.innerHTML += `${sconto.toFixed(2)}`
-        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
+let x20 = (prezzoBigliettoIntero * 20 / 100);
+let x40 = (prezzoBigliettoIntero * 40 / 100);
 
-    } else if (eta === 'over65') {
-        // calcolo sconto del 40% moltiplico prezzo biglietto per 0.4         
-        sconto = (prezzoBiglietto * 0.4)
-        // calcolo prezzo scontato
-        const prezzoScontato = (prezzoBiglietto - sconto)
-        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
-        scontoElement.innerHTML += `${sconto.toFixed(2)}`
-        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
+let prezzoBigliettoUnder = (prezzoBigliettoIntero - x20)
+console.log(`Il prezzo per gli Under è: ${prezzoBigliettoUnder}€ `)
+let prezzoBigliettoOver = (prezzoBigliettoIntero - x40)
+console.log(`Il prezzo per gli Over è: ${prezzoBigliettoOver}€`)
+if (age < 18) {
+    alert(prezzoBigliettoUnder)
+} else if (age > 18 && age < 65) {
+    alert(prezzoBigliettoIntero)
+} else if (age > 65) {
+    alert(prezzoBigliettoOver)
+}
 
-    } else {
-        // calcolo sconto del 40% moltiplico prezzo biglietto per 0.4         
-        sconto = 0
-        // calcolo prezzo scontato
-        const prezzoScontato = (prezzoBiglietto - sconto)
-        prezzoBaseElement.innerHTML += `${prezzoBiglietto.toFixed(2)}`
-        scontoElement.innerHTML += `${sconto.toFixed(2)}`
-        totaleElement.innerHTML += `${prezzoScontato.toFixed(2)}`
-    }
-    username = document.getElementById("name").value;
-    document.getElementById("myUsername").textContent = `${username}`;
-
-
-})
+document.getElementById("costoBiglietto").innerHTML = msg + risultato + "#24";
+document.getElementById("costoBiglietto").innerHTML = msg + (prezzoBigliettoUnder || prezzoBigliettoIntero || prezzoBigliettoOver) + "€"
 
